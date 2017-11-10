@@ -1,7 +1,7 @@
 Simple Create, Read, Update, Delete (CRUD) using Angular.
 
 # Before you run:
-1. Install Angular CLI (https://cli.angular.io)
+1. Install Angular CLI (more info: https://cli.angular.io)
 2. Install needed modules (ngx-bootstrap and ng2-validation)
   - https://github.com/yuyang041060120/ng2-validation
   - https://github.com/valor-software/ngx-bootstrap
