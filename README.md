@@ -1,3 +1,14 @@
+Simple Create, Read, Update, Delete (CRUD) using Angular.
+
+# Before you run:
+1. Install Angular CLI (more info: https://cli.angular.io)
+2. Install needed modules (ngx-bootstrap and ng2-validation)
+  - https://github.com/yuyang041060120/ng2-validation
+  - https://github.com/valor-software/ngx-bootstrap
+3. Install Json-server (more info: https://github.com/typicode/json-server)
+4. Go to `json-server` folder, open cmd or git bash, then type `json-server db.json --watch`
+5. Inside project folder, open cmd or git bash then type `ng serve --open`
+
 # NgSimpleCrud
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
