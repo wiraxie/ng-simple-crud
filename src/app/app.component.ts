@@ -6,7 +6,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 
 //include stockService yg sudah di-get
 import { stockService } from './stock.service';
-import { Http, BaseRequestOptions, BaseResponseOptions } from '@angular/http';
+import { Http, BaseRequestOptions, BaseResponseOptions, Jsonp } from '@angular/http';
 
 @Component
 ({
