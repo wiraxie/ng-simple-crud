@@ -1,4 +1,11 @@
-Simple Create, Read, Update, Delete (CRUD) using Angular
+Simple Create, Read, Update, Delete (CRUD) using Angular.
+
+# Before you run:
+1. Install Angular CLI (https://cli.angular.io)
+2. Install needed modules (ngx-bootstrap and ng2-validation)
+  - https://github.com/yuyang041060120/ng2-validation
+  - https://github.com/valor-software/ngx-bootstrap
+3. Inside project folder, open cmd or git bash then type `ng serve --open`
 
 # NgSimpleCrud
 
