@@ -1,0 +1,19 @@
+{
+  "stocks": [
+    {
+      "id": "1",
+      "stockCode": "one",
+      "name": "satu"
+    },
+    {
+      "id": "2",
+      "stockCode": "two",
+      "name": "dua"
+    },
+    {
+      "id": "3",
+      "stockCode": "three",
+      "name": "tiga"
+    }
+  ]
+}

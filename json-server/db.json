@@ -1,0 +1,60 @@
+{
+  "Student": [
+	{
+      "id": "1",
+      "name": "alpha",
+      "year": "2011",
+      "semester": "1",
+      "major": "Computer Science",
+      "score": "100",
+      "email": "alpha@alp.com"
+    },
+    {
+      "id": "2",
+      "name": "bravo",
+      "year": "2012",
+      "semester": "2",
+      "major": "Accounting",
+      "score": "75",
+      "email": "bravo@brv.com"
+    },
+    {
+      "Id": "3",
+      "name": "charlie",
+      "year": "2013",
+      "semester": "3",
+      "major": "Politic",
+      "score": "87",
+      "email": "charlie@chr.com",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "name": "delta",
+      "year": "2014",
+      "semester": "4",
+      "major": "Computer Science",
+      "score": "95",
+      "email": "delta@del.com"
+    },
+    {
+      "id": "5",
+      "name": "echo",
+      "year": "2015",
+      "semester": "5",
+      "major": "Accounting",
+      "score": "65",
+      "email": "echo@ech.com"
+    },
+    {
+      "Id": "6",
+      "name": "foxtrot",
+      "year": "2016",
+      "semester": "6",
+      "major": "Politic",
+      "score": "100",
+      "email": "foxtrot@fox.com",
+      "id": "6"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+<body>
+  <h3 myHighLight align="center">{{title}}</h3>
+  <alert type="success" align="center">
+    <div align="center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD</button>
+    </div>
+  </alert>
+<hr>
+
+<!--table-->
+  <div align="center">
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Semester</th>
+      <th>Major</th>
+      <th>Score</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let Student of Student" [attr.id]="Student.id">
+    <td>{{Student.id}}</td> 
+    <td>{{Student.name}}</td>
+    <td>{{Student.year}}</td>
+    <td>{{Student.semester}}</td>
+    <td>{{Student.major}}</td>
+    <td>{{Student.score}}</td>
+    <td>{{Student.email}}</td>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" (click)="loadStu(Student)">UPDATE</button>
+
+    <button type="button" class="btn btn-danger" (click)="delStudent(Student.id)">DELETE</button>
+  </tr>
+  </table>
+  </div>
+<!--end of table-->
+<hr>
+
+<!--Modal for Add-->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add a Student</h4>
+        </div>
+      
+        <!--modal's body-->
+        <div class="modal-body" align="center">     
+        <!--form utk insert-->
+        <form align="center" ngNativeValidate>       
+        ID: 
+        <input #newId="ngModel" name="id" class="form-control" [(ngModel)]="newId.value" required digits/>Valid?{{newId.valid}}, Clean?{{newId.pristine}}, Touched?{{newId.touched}}
+        <p *ngIf="newId.invalid || newId.errors?.digits">ID must be filled and must numbers</p>
+
+        <br>Name: 
+        <input #newName="ngModel" name="name" class="form-control" [(ngModel)]="newName.value" required [rangeLength]="[3, 30]"/>Valid?{{newName.pristine}}, Clean?{{newName.pristine}}, Touched?{{newName.touched}}
+        <p *ngIf="newName.invalid || newName.errors?.rangeLength">Name must be filled and must 3-30 chars</p>
+        
+        <br>Year: 
+        <input #newYear="ngModel" name="year" class="form-control" [(ngModel)]="newYear.value" required digits/>Valid?{{newYear.valid}}, Clean?{{newYear.pristine}}, Touched?{{newYear.touched}}
+        <p *ngIf="newYear.invalid || newYear.errors?.digits">Year must be filled and must numbers</p>
+
+        <br>Semester:
+        <input #newSemester="ngModel" name="semester" class="form-control" [(ngModel)]="newSemester.value" required digits/>Valid?{{newSemester.valid}}, Clean?{{newSemester.pristine}}, Touched?{{newSemester.touched}}
+        <p *ngIf="newSemester.invalid || newSemester.errors?.digits">Semester must be filled and must numbers</p>
+        
+        <br>Major:
+        <select #newMajor="ngModel" name="major" [(ngModel)]="newMajor.value" class="form-control" required>Valid?{{newMajor.valid}}, Clean?{{newMajor.pristine}}, Touched?{{newMajor.touched}}
+          <option value="Computer Science">Computer Science</option>
+          <option value="Politic">Politic</option>
+          <option value="Accounting">Accounting</option>  
+        </select>
+        <p *ngIf="newMajor.invalid">Major must be filled</p>
+
+        <br>Score: 
+        <input #newScore="ngModel" name="score" class="form-control" [(ngModel)]="newScore.value" required digits [range]="[0, 100]">Valid?{{newScore.valid}}, Clean?{{newScore.pristine}}, Touched?{{newScore.touched}}
+        <p *ngIf="newScore.invalid || newScore.errors?.digits || newScore.errors?.range">Score must be filled, must numbers, and must between 0-100</p>
+
+        <br>Email:
+        <input #newEmail="ngModel" name="email" class="form-control" [(ngModel)]="newEmail.value" required email/>Valid?{{newEmail.valid}}, Clean?{{newEmail.pristine}}, Touched?{{newEmail.touched}}
+        <p *ngIf="newEmail.invalid || newEmail.errors?.email">Email must contains @ and domain</p>
+
+          <!--Jika kondisi valid-->
+          <div *ngIf="newId.valid && newName.valid && newYear.valid && newSemester.valid && newMajor.valid && newScore.valid && newEmail.valid">
+            <button class="btn btn-primary" type="submit" (click)="addStudent(newId.value, newName.value, newYear.value, newSemester.value, newMajor.value, newScore.value, newEmail.value)" data-dismiss="modal">SAVE</button>	
+          </div>
+
+          <!--jika kondisi invalid-->
+          <div *ngIf="newId.invalid || newName.invalid || newYear.invalid || newSemester.invalid || newMajor.invalid || newScore.invalid || newEmail.invalid">
+            <button disabled title="can not save, please check error message above" class="btn btn-primary" type="submit" (click)="addStudent(newId.value, newName.value, newYear.value, newSemester.value, newMajor.value, newScore.value, newEmail.value)">SAVE</button>
+          </div>
+
+          <!-- <button class="btn btn-secondary" data-dismiss="modal" (click)="getAllStocks()">CANCEL</button> -->
+          <button class="btn btn-secondary" data-dismiss="modal" (click)="getAllStocks()">CANCEL</button>
+
+          </form>
+        </div>   
+      </div>
+    </div>
+  </div>
+<!--End of Modal Add-->
+
+<!--Modal for Upd-->
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit Student Data</h4>
+        </div>
+        <div class="modal-body">
+          <!--update-->
+            <div *ngIf="updateEnable" align="center">
+            <form align="center" ngNativeValidate>
+            id: <input disabled name="id" #updId="ngModel" [value]="selectedStudent.id" [(ngModel)]="selectedStudent.id" class="form-control" required/>
+        
+            <br>
+            name: <input name="name" #updName="ngModel" [value]="selectedStudent.name" [(ngModel)]="selectedStudent.name" class="form-control" required [rangeLength]="[3, 30]"/>{{updName.valid}}, {{updName.touched}}, {{updName.pristine}}
+            <p *ngIf="updName.invalid || updName.errors?.rangeLength">Name must be filled and must 3-30 char</p>
+        
+            <br>
+            year: <input name="year" #updYear="ngModel" [value]="selectedStudent.year" [(ngModel)]="selectedStudent.year" class="form-control" required digits/>{{updYear.valid}}, {{updYear.touched}}, {{updYear.pristine}}
+            <p *ngIf="updYear.invalid || updYear.errors?.digits">Year must be filled and must number</p>  
+
+            <br>
+            semester: <input name="semester" #updSemester="ngModel" [value]="selectedStudent.semester" [(ngModel)]="selectedStudent.semester" class="form-control" required digits/>{{updSemester.valid}}, {{updSemester.touched}}, {{updSemester.pristine}}
+            <p *ngIf="updSemester.invalid || updSemester.errors?.digits">Semester must be filled and must number</p>
+        
+            <br>Major:
+            <select name="major" #updMajor="ngModel" [value]="selectedStudent.major" [(ngModel)]="selectedStudent.major" class="form-control" required>{{updMajor.valid}}
+              <option class="form-control" value="Computer Science">Computer Science</option>
+              <option class="form-control" value="Politic">Politic</option>
+              <option class="form-control" value="Accounting">Accounting</option>  
+            </select>
+            <p *ngIf="updMajor.invalid">Major must be filled</p>
+        
+            <br>
+            score: <input name="score" #updScore="ngModel" [value]="selectedStudent.score" [(ngModel)]="selectedStudent.score" class="form-control" required digits [range]="[0, 100]"/>{{updScore.valid}}, {{updScore.touched}}, {{updScore.pristine}}
+            <p *ngIf="updScore.invalid || updScore.errors?.digits || updScore.errors?.range">Score must be filled,0 must number, and between 0-100</p>
+
+            <br>
+            email: <input name="email" #updEmail="ngModel" [value]="selectedStudent.email" [(ngModel)]="selectedStudent.email" class="form-control" required email/>{{updEmail.valid}}, {{updEmail.touched}}, {{updEmail.pristine}}
+            <p *ngIf="updEmail.invalid || updEmail.errors?.email">Email must be filled and must contains @ and domain</p>
+            <br>
+
+            <!-- <button disabled id="updButton" class="btn btn-warning" type="button" (click)="updStudent(updId.value , updName.value, updYear.value, updSemester, updMajor.value , updScore.value, updEmail.value)" data-dismiss="modal">SAVE</button> -->
+
+            <!--jika kondisi valid-->
+            <span *ngIf="selectedStudent.id.value == valid && updName.valid && updYear.valid && updSemester.valid && updMajor.valid && updScore.valid && updEmail.valid">
+              <button class="btn btn-warning" type="button" (click)="updStudent(updId.value, updName.value, updYear.value, updSemester.value, updMajor.value, updScore.value, updEmail.value); getAllStocks()" data-dismiss="modal">SAVE</button>
+            </span>
+
+            <!--jika konsidi invalid-->
+            <span *ngIf="updId.invalid || updName.invalid || updYear.invalid || updSemester.invalid || updMajor.invalid || updScore.invalid || updEmail.invalid">
+              <button disabled class="btn btn-warning" title="can not save, please check error message above" type="button" (click)="updStudent(updId.value , updName.value, updYear.value, updSemester, updMajor.value , updScore.value, updEmail.value)" data-dismiss="modal">SAVE</button>
+            </span>
+            
+            <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal" (click)="getAllStocks()">CANCEL</button>  -->
+            <button class="btn btn-secondary" type="button" data-dismiss="modal" (click)="getAllStocks()">CANCEL</button>
+
+            </form>
+          </div>
+        <!--end of upd-->
+        </div>
+      </div>
+    </div>
+  </div>
+<!--End of Modal Upd-->
+</body>
