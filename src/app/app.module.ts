@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
 import { CustomFormsModule } from 'ng2-validation'
@@ -28,6 +28,7 @@ import { stockService } from './stock.service'; //sama2
     ReactiveFormsModule,
     ModalModule,
     CustomFormsModule,
+    JsonpModule,
     AlertModule.forRoot(),
   ],
   providers: [stockService], //servis masuk sini

@@ -35,8 +35,8 @@ export class stockService
     //request
     getStocksAPI(): Observable<any>
     {
-        //return this.http.get("http://localhost:3000/Student/") //perhatikan port localhost
-        return this.http.get("https://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/")
+        return this.http.get("http://localhost:3000/Student/") //perhatikan port localhost
+        //return this.http.get("https://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/")
         .map( (res: Response) => res.json() )
         .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
     }
@@ -46,8 +46,8 @@ export class stockService
     //add
     addStudent(newId: string, newName: string, newYear: string, newSemester: string, newMajor: string, newScore: string, newEmail: string): Observable<any>
     {
-        //return this.http.post("http://localhost:3000/Student/", {id: newId, name: newName, year: newYear, semester: newSemester, major: newMajor, score: newScore, email: newEmail});
-        return this.http.post("https://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/", {id: newId, name: newName, year: newYear, semester: newSemester, major: newMajor, score: newScore, email: newEmail});
+        return this.http.post("http://localhost:3000/Student/", {id: newId, name: newName, year: newYear, semester: newSemester, major: newMajor, score: newScore, email: newEmail});
+        //return this.http.post("https://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/", {id: newId, name: newName, year: newYear, semester: newSemester, major: newMajor, score: newScore, email: newEmail});
     }
     //end of add
 
@@ -55,27 +55,27 @@ export class stockService
     //update
     updStudent(Id: string, newName: string, newYear: string, newSemester: string, newMajor: string, newScore: string, newEmail: string): Observable<any>
     {
-        return this.http.put("https://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/"+Id,
-            {
-                Id: Id,
-                name: newName, 
-                year: newYear,
-                semester: newSemester,
-                major: newMajor,
-                score: newScore,
-                email: newEmail
-            });
+        // return this.http.put("https://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/"+Id,
+        //     {
+        //         Id: Id,
+        //         name: newName, 
+        //         year: newYear,
+        //         semester: newSemester,
+        //         major: newMajor,
+        //         score: newScore,
+        //         email: newEmail
+        //     });
              
-        //  return this.http.put("http://localhost:3000/Student/"+Id,
-        //  {
-        //      Id: Id,
-        //      name: newName, 
-        //      year: newYear,
-        //      semester: newSemester,
-        //      major: newMajor,
-        //      score: newScore,
-        //      email: newEmail
-        //  });
+         return this.http.put("http://localhost:3000/Student/"+Id,
+         {
+             Id: Id,
+             name: newName, 
+             year: newYear,
+             semester: newSemester,
+             major: newMajor,
+             score: newScore,
+             email: newEmail
+         });
      }
      //end of update
 
@@ -83,8 +83,8 @@ export class stockService
     //delete
     delStudent(id: string): Observable<any>
     {
-        //return this.http.delete("http://localhost:3000/Student/" +id);
-        return this.http.delete("https://jsonbhttps://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/" +id);
+        return this.http.delete("http://localhost:3000/Student/" +id);
+        //return this.http.delete("https://jsonbhttps://jsonblob.com/api/jsonblob/d8fc409d-c5d7-11e7-a9dc-ab45beee027e/" +id);
     }
     //end of delete
 

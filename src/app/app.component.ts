@@ -102,12 +102,13 @@ export class AppComponent implements OnInit
   updStudent(id, newName: string, newYear: string, newSemester: string, newMajor: string, newScore: string, newEmail: string) 
   {
      this.stockService.updStudent(this.selectedStudent.id, newName, newYear, newSemester, newMajor, newScore, newEmail).subscribe
-   (
-       data => 
-     {
-         this.getAllStocks();
-       }
+     (
+        data => 
+        {
+          this.getAllStocks();
+        } 
      );
+     console.log('ini', id, newName, newYear, newSemester, newMajor, newScore, newEmail);
    }
   loadStu(Student: any)
   {
